@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Todo, TodosService} from '../list/todos.service';
+import {Todo, TodoService} from '../list/todo.service';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 
@@ -11,12 +11,12 @@ import {Observable} from 'rxjs';
 export class TodoDetailComponent implements OnInit {
   todo$: Observable<Todo>;
 
-  constructor(private route: ActivatedRoute, private todoService: TodosService) { }
+  constructor(private route: ActivatedRoute, private todoService: TodoService) { }
 
   ngOnInit() {
     const todoId = +this.route.snapshot.paramMap.get('id');
 
-    this.todo$ = this.todoService.getTodo(todoId);
+    this.todo$ = this.todoService.get(todoId);
   }
 
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Todo, TodosService} from './todos.service';
+import {Todo, TodoService} from './todo.service';
 import {CollectionViewer, DataSource} from '@angular/cdk/collections';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
@@ -11,7 +11,7 @@ export class TodosDataSource implements DataSource<Todo> {
 
   public loading$ = this.loadingSubject.asObservable();
 
-  constructor(private todosService: TodosService) {}
+  constructor(private todosService: TodoService) {}
 
   connect(collectionViewer: CollectionViewer): Observable<Todo[]> {
     return this.todos$;
@@ -25,7 +25,7 @@ export class TodosDataSource implements DataSource<Todo> {
   loadTodos() {
     this.loadingSubject.next(true);
 
-    this.todosService.get().pipe(
+    this.todosService.list().pipe(
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false))
     )
@@ -42,7 +42,7 @@ export class TodosListComponent implements OnInit {
   displayedColumns: string[] = ['userId', 'id', 'title', 'completed'];
   dataSource;
 
-  constructor(private todosService: TodosService) {
+  constructor(private todosService: TodoService) {
   }
 
   ngOnInit() {

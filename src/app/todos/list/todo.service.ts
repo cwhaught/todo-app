@@ -5,15 +5,15 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TodosService {
+export class TodoService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Todo[]> {
+  list(): Observable<Todo[]> {
     return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
   }
 
-  getTodo(id: number): Observable<Todo> {
+  get(id: number): Observable<Todo> {
     return this.http.get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`);
   }
 }
