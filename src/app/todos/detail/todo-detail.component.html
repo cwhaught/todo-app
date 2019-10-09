@@ -1,0 +1,6 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{(todo$ | async)?.title}}</mat-card-title>
+    <mat-card-subtitle><span *ngIf="!(todo$ | async)?.completed">Not</span> Completed</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>

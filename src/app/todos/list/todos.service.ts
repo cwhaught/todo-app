@@ -9,8 +9,12 @@ export class TodosService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/todos');
+  get(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  }
+
+  getTodo(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`);
   }
 }
 
