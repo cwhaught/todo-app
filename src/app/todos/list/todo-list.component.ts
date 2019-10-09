@@ -13,11 +13,11 @@ export class TodoListDataSource implements DataSource<Todo> {
 
   constructor(private todoService: TodoService) {}
 
-  connect(collectionViewer: CollectionViewer): Observable<Todo[]> {
+  connect(): Observable<Todo[]> {
     return this.todos$;
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     // clean up our observables to prevent memory leaks
     this.todos$.complete();
     this.loadingSubject.complete();
@@ -56,6 +56,10 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new TodoListDataSource(this.todoService);
+    this.load();
+  }
+
+  load() {
     this.dataSource.load();
   }
 

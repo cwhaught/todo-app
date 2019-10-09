@@ -7,7 +7,6 @@
     "build": "ng build",
     "test": "jest",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "test:watch": "jest --watch"
   },
   "private": true,
