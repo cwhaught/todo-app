@@ -13,3 +13,10 @@ export class TodosService {
     return this.http.get('https://jsonplaceholder.typicode.com/todos');
   }
 }
+
+export interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
