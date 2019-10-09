@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {TodosListComponent} from './todos/list/todos-list.component';
+import {TodoListComponent} from './todos/list/todo-list.component';
 import {TodoDetailComponent} from './todos/detail/todo-detail.component';
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: TodosListComponent,
+        component: TodoListComponent,
       },
       {
       path: ':id',
